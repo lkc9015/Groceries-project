@@ -34,23 +34,38 @@ for product in products:
     print (" + " + product["name"] + str(price_usd))
 
 ## Products
-
 print("----------------------")
 
 departments = []  ## for calculating the number of unique departments, let's make an empty list first.
 for product in products:
     departments.append(product["department"])
 
-departments = set(departments) ## set: remove duplicated values, a list becomes a dictionary
-departments = list(departments) ## change dictionary to list
+Unique_departments = set(departments) ## set: remove duplicated values, a list becomes a dictionary
+Unique_departments = list(Unique_departments) ## change dictionary to list
+Unique_departments = sorted(Unique_departments) ## sort departments by name
 
-print("THERE ARE " + str(len(departments)) + " DEPARTMENTS")
+print("THERE ARE " + str(len(Unique_departments)) + " DEPARTMENTS")
 
-departments.sort()
+for department in Unique_departments:
+    count_of_departments = departments.count(department)
+    print(" + " + department.title() + " (" + str(count_of_departments) + " products)")
 
-for department in departments:
-    print(" + " + department.title())
 
+### different way
+# departments = set(departments) ## set: remove duplicated values, a list becomes a dictionary
+# departments = list(Unique_departments) ## change dictionary to list
+# departments = sorted(Unique_departments) ## sort departments by name
+# departments.sort() --> another way to sort
+
+# print("THERE ARE " + str(len(departments)) + " DEPARTMENTS")
+
+# def get_products(department_name):
+#    return [product for product in products if product["department"] == department_name]
+
+# for department in departments:
+#     department_products = get_products(department)
+#     product_count = len(department_products)
+#     print(" + " + department.title() + " (" + str(product_count) + " products)")
 
 
 
